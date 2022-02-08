@@ -6,7 +6,8 @@ function UserList() {
     const [userList, setUserList] = useState ([]);
     const [error, setError] = useState(null);
 
-    const getUserList = () => {
+    useEffect(() => {
+        const getUserList = () => {
             axios.get('https://jsonplaceholder.typicode.com/users')
             .then(response => {
                 setUserList(response.data)
@@ -15,9 +16,7 @@ function UserList() {
             .catch(err => {
                 setError(err.message)
             })
-        }
-
-    useEffect(() => {
+        };
         getUserList()
     },[])
 
